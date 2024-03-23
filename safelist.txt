@@ -1,0 +1,12 @@
+.bg-green-800
+.bg-red-800
+.bg-blue-800
+.bg-gray-800
+.bg-pink-800
+
+
+.bg-green-200
+.bg-red-200
+.bg-blue-200
+.bg-gray-200
+.bg-pink-200

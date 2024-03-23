@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.move-enter-active,
+.move-leave-active {
+  transition: transform 0.25s ease , opacity .125s ease-in ;
+}
+
+.move-enter-from,
+.move-leave-to {
+  transform: translateX(100%) ;
+  opacity: 0;
+}
+
+
+@font-face {
+  font-family: "7 Segment";
+  src: url("/7segment.woff") format("woff") 
+}
+
+.number  {
+  font-family: "7 Segment";
+  text-transform: uppercase;
+}
