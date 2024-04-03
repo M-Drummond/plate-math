@@ -97,10 +97,15 @@ function toggleHandMode() {
       </transition-group>
     </div>
 
-    <!--  -->
+    <!-- dark:text-orange-400 dark:bg-slate-800 -->
 
-    <p class="mb-8 text-[50px] font-bold number border-t border-solid  py-4">{{ computedTotal }}</p>
+    <div :class="leftyMode ? 'before:skew-x-12' : 'before:skew-x-[-12deg]'"
+      class=" dark:text-slate-800 mt-8 pt-5 transition-all relative before:w-2/3 before:mx-auto before:h-full before:z-0 before:inset-0 before:dark:bg-orange-400 before:absolute ">
+      <p class="mb-8 text-[50px]  font-[900] number relative z-20 py-4">{{ computedTotal }}</p>
 
+      <span class="absolute bottom-6 left-0 right-0 text-2xl font-bold">Total</span>
+
+    </div>
     <div class="flex flex-row items-center mb-8 mt-auto justify-between">
 
       <button class="border border-solid focus:border-double active:border-double border-black  dark:border-white p-2"

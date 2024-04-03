@@ -33,3 +33,8 @@
   /* font-family: "7 Segment"; */
   text-transform: uppercase;
 }
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('/Manrope-VariableFont_wght.ttf') format('truetype');
+}

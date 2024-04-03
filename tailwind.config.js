@@ -2,8 +2,11 @@
 export default {
   content: ['./index.html', 'safelist.txt', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Manrope', 'Helvetica', 'Arial']
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 }
-
