@@ -62,15 +62,16 @@ function toggleHandMode() {
 </script>
 
 <template>
-  <main class=" flex flex-col da  text-center p-4  min-h-[90vmax] my-1 mx-1 overflow-x-hidden">
+  <main class=" flex flex-col font-bold text-center p-0 min-h-[90vmax]   overflow-x-hidden">
 
-    <div class="flex flex-row items-center mb-8 border-b pb-4 border-solid  justify-between">
-      <button class="border border-solid number transition-opacity border-black dark:border-white p-2"
+    <div
+      class="flex flex-row items-center justify-between p-2 mb-8 font-bold border-b-8 border-current dark:border-teal-700 dark:bg-orange-400 dark:text-slate-800">
+      <button class="p-2 transition-opacity border border-current border-solid number "
         :class="barWeight == 20 ? '' : 'opacity-25'" @click="barWeight = 20">
         20
       </button>
-      <span>Bar Weight</span>
-      <button class="border border-solid number transition-opacity border-black dark:border-white p-2"
+      <span>Plate Math</span>
+      <button class="p-2 transition-opacity border border-black border-solid number dark:border-white"
         :class="barWeight == 15 ? '' : 'opacity-25'" @click="barWeight = 15">
         15
       </button>
@@ -78,7 +79,7 @@ function toggleHandMode() {
 
     <!--  -->
 
-    <div class="flex    space-x-1 items-center  relative mb-4" :class="leftyMode ? 'justify-end ml-12  ' : ''"
+    <div class="relative flex items-center px-4 mb-4 space-x-1" :class="leftyMode ? 'justify-end ml-12  ' : ''"
       v-for="(plate, plateKey) in loadedPlates" :key="plateKey">
       <button @click="loadedPlates[plateKey].count++" v-if="loadedPlates[plateKey]"
         :class="[leftyMode ? 'order-last' : '', `bg-${loadedPlates[plateKey].color}-200`]"
@@ -100,20 +101,21 @@ function toggleHandMode() {
     <!-- dark:text-orange-400 dark:bg-slate-800 -->
 
     <div :class="leftyMode ? 'before:skew-x-12' : 'before:skew-x-[-12deg]'"
-      class=" dark:text-slate-800 mt-8 pt-5 transition-all relative before:w-2/3 before:mx-auto before:h-full before:z-0 before:inset-0 before:dark:bg-orange-400 before:absolute ">
+      class="relative pt-5 mt-8 transition-all dark:text-slate-800 before:w-2/3 before:mx-auto before:h-full before:z-0 before:inset-0 before:dark:bg-orange-400 before:absolute">
       <p class="mb-8 text-[50px]  font-[900] number relative z-20 py-4">{{ computedTotal }}</p>
 
-      <span class="absolute bottom-6 left-0 right-0 text-2xl font-bold">Total</span>
+      <span class="absolute left-0 right-0 text-2xl font-bold bottom-6">Total KG</span>
 
     </div>
-    <div class="flex flex-row items-center mb-8 mt-auto justify-between">
+    <div
+      class="fixed bottom-0 flex flex-row items-center justify-between w-full p-4 mt-8 border-t-8 border-current dark:border-teal-700 ">
 
-      <button class="border border-solid focus:border-double active:border-double border-black  dark:border-white p-2"
+      <button class="p-2 border border-black border-solid focus:border-double active:border-double dark:border-white"
         @click="reset">
         Reset All
       </button>
       <button @click="toggleHandMode"
-        class="border border-solid focus:border-double active:border-double border-black  dark:border-white p-2"
+        class="p-2 border border-black border-solid focus:border-double active:border-double dark:border-white"
         v-text="leftyMode ? 'Left Handed' : 'Right Handed'"></button>
     </div>
 
