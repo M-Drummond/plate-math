@@ -101,7 +101,7 @@ function toggleHandMode() {
     <!-- dark:text-orange-400 dark:bg-slate-800 -->
 
     <div :class="leftyMode ? 'before:skew-x-12' : 'before:skew-x-[-12deg]'"
-      class="relative pt-5 mt-8 transition-all dark:text-slate-800 before:w-2/3 before:mx-auto before:h-full before:z-0 before:inset-0 before:dark:bg-orange-400 before:absolute">
+      class="relative pt-5 mt-8 transition-all dark:text-slate-800 before:w-2/3 before:mx-auto before:h-full before:z-0 before:inset-0 before:bg-gray-300 before:dark:bg-orange-400 before:absolute">
       <p class="mb-8 text-[50px]  font-[900] number relative z-20 py-4">{{ computedTotal }}</p>
 
       <span class="absolute left-0 right-0 text-2xl font-bold bottom-6">Total KG</span>
