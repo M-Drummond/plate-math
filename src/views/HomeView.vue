@@ -52,11 +52,17 @@ function reset() {
   }
 }
 
+var leftyMode = ref(true)
+
+function toggleHandMode() {
+  leftyMode.value = !leftyMode.value;
+  console.log(leftyMode)
+}
+
 </script>
 
 <template>
-  <main
-    class="bg-white flex flex-col dark:bg-gray-900 dark:text-white text-center p-4 rounded-[30px] min-h-[90vmax] my-4 mx-4 overflow-x-hidden">
+  <main class=" flex flex-col da  text-center p-4  min-h-[90vmax] my-1 mx-1 overflow-x-hidden">
 
     <div class="flex flex-row items-center mb-8 border-b pb-4 border-solid  justify-between">
       <button class="border border-solid number transition-opacity border-black dark:border-white p-2"
@@ -70,32 +76,40 @@ function reset() {
       </button>
     </div>
 
-    <div class="flex flex-row space-x-[-25px] items-center relative justify-center mb-4"
+    <!--  -->
+
+    <div class="flex    space-x-1 items-center  relative mb-4" :class="leftyMode ? 'justify-end ml-12  ' : ''"
       v-for="(plate, plateKey) in loadedPlates" :key="plateKey">
       <button @click="loadedPlates[plateKey].count++" v-if="loadedPlates[plateKey]"
-        :class="`bg-${loadedPlates[plateKey].color}-200`"
-        class="p-2 w-[75px] h-[75px] flex flex-col items-center justify-center number  transition-all aspect-square relative z-[9999]  rounded-full  border-solid border text-black text-[45px]  "
-        id="20kg+">{{
+        :class="[leftyMode ? 'order-last' : '', `bg-${loadedPlates[plateKey].color}-200`]"
+        class="p-2 left-0 dark:bg-opacity-0 w-[50px] h-[50px] flex flex-col items-center justify-center number  transition-all aspect-square relative z-[9999] border-solid border text-xl  "
+        id="20kg+"> {{
           loadedPlates[plateKey].weight }}</button>
 
-      <transition-group name="move">
+      <transition-group :name="leftyMode ? 'move-left' : 'move-right'">
 
         <button @click="loadedPlates[plateKey].count--" v-for="index in loadedPlates[plateKey].count" :key="index"
           :class="`bg-${loadedPlates[plateKey].color}-800`"
-          class="p-2 w-[75px] h-[75px] flex flex-col items-center justify-center number aspect-square relative z-0 text-white rounded-full  border-solid border  text-[45px]">
+          class="p-2 w-[50px] h-[50px] bg-opacity-20 dark:bg-opacity-0 border-4 flex flex-col items-center justify-center number aspect-square relative z-0   rounded-full  border-solid border  text-xl">
           {{
           loadedPlates[plateKey].weight }}</button>
 
       </transition-group>
     </div>
 
+    <!--  -->
+
     <p class="mb-8 text-[50px] font-bold number border-t border-solid  py-4">{{ computedTotal }}</p>
 
-    <div class="flex flex-row items-center mb-8 mt-auto justify-center">
+    <div class="flex flex-row items-center mb-8 mt-auto justify-between">
+
       <button class="border border-solid focus:border-double active:border-double border-black  dark:border-white p-2"
         @click="reset">
         Reset All
       </button>
+      <button @click="toggleHandMode"
+        class="border border-solid focus:border-double active:border-double border-black  dark:border-white p-2"
+        v-text="leftyMode ? 'Left Handed' : 'Right Handed'"></button>
     </div>
 
   </main>
