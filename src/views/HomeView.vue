@@ -43,7 +43,7 @@ export const loadedPlates = ref<Record<string, Plate>>({
   }
 })
 
-export var leftyMode = ref(true)
+export var leftyMode = ref<boolean>(true)
 
 export function toggleHandMode() {
   leftyMode.value = !leftyMode.value
@@ -60,30 +60,19 @@ export function reset() {
   <main class="flex flex-col font-bold text-center p-0 min-h-[90vmax] overflow-x-hidden">
     <HeaderBar />
 
-    <div
-      class="relative flex items-center px-4 mb-4 space-x-1"
-      :class="leftyMode ? 'justify-end ml-12  ' : ''"
-      v-for="(plate, plateKey) in loadedPlates"
-      :key="plateKey"
-    >
-      <button
-        @click="loadedPlates[plateKey].count++"
-        v-if="loadedPlates[plateKey]"
+    <div class="relative flex items-center px-4 mb-4 space-x-1" :class="leftyMode ? 'justify-end ml-12  ' : ''"
+      v-for="(plate, plateKey) in loadedPlates" :key="plateKey">
+      <button @click="loadedPlates[plateKey].count++" v-if="loadedPlates[plateKey]"
         :class="[leftyMode ? 'order-last' : '', `bg-${loadedPlates[plateKey].color}-200`]"
         class="p-2 left-0 dark:bg-opacity-0 w-[50px] h-[50px] flex flex-col items-center justify-center number transition-all aspect-square relative z-[9999] border-solid border text-xl"
-        id="20kg+"
-      >
+        id="20kg+">
         {{ loadedPlates[plateKey].weight }}
       </button>
 
       <transition-group :name="leftyMode ? 'move-left' : 'move-right'">
-        <button
-          @click="loadedPlates[plateKey].count--"
-          v-for="index in loadedPlates[plateKey].count"
-          :key="index"
+        <button @click="loadedPlates[plateKey].count--" v-for="index in loadedPlates[plateKey].count" :key="index"
           :class="`bg-${loadedPlates[plateKey].color}-800`"
-          class="p-2 w-[50px] h-[50px] bg-opacity-20 dark:bg-opacity-0 border-4 flex flex-col items-center justify-center number aspect-square relative z-0 rounded-full border-solid text-xl"
-        >
+          class="p-2 w-[50px] h-[50px] bg-opacity-20 dark:bg-opacity-0 border-4 flex flex-col items-center justify-center number aspect-square relative z-0 rounded-full border-solid text-xl">
           {{ loadedPlates[plateKey].weight }}
         </button>
       </transition-group>
