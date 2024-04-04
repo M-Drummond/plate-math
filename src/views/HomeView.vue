@@ -66,15 +66,23 @@ function toggleHandMode() {
 
     <div
       class="flex flex-row items-center justify-between p-2 mb-8 font-bold border-b-8 border-current dark:border-teal-700 dark:bg-orange-400 dark:text-slate-800">
-      <button class="p-2 transition-opacity border border-current border-solid number "
-        :class="barWeight == 20 ? '' : 'opacity-25'" @click="barWeight = 20">
-        20
-      </button>
+      <div class="flex flex-row space-x-2">
+        <button class="p-2 transition-opacity border border-current border-solid number dark:border-white "
+          :class="barWeight == 0 ? '' : 'opacity-25'" @click="barWeight = 0">
+          0
+        </button>
+        <button class="p-2 transition-opacity border border-black border-solid number dark:border-white"
+          :class="barWeight == 15 ? '' : 'opacity-25'" @click="barWeight = 15">
+          15
+        </button>
+        <button class="p-2 transition-opacity border border-current border-solid number dark:border-white"
+          :class="barWeight == 20 ? '' : 'opacity-25'" @click="barWeight = 20">
+          20
+        </button>
+
+      </div>
       <span>Plate Math</span>
-      <button class="p-2 transition-opacity border border-black border-solid number dark:border-white"
-        :class="barWeight == 15 ? '' : 'opacity-25'" @click="barWeight = 15">
-        15
-      </button>
+
     </div>
 
     <!--  -->
@@ -85,7 +93,7 @@ function toggleHandMode() {
         :class="[leftyMode ? 'order-last' : '', `bg-${loadedPlates[plateKey].color}-200`]"
         class="p-2 left-0 dark:bg-opacity-0 w-[50px] h-[50px] flex flex-col items-center justify-center number  transition-all aspect-square relative z-[9999] border-solid border text-xl  "
         id="20kg+"> {{
-          loadedPlates[plateKey].weight }}</button>
+            loadedPlates[plateKey].weight }}</button>
 
       <transition-group :name="leftyMode ? 'move-left' : 'move-right'">
 
@@ -93,7 +101,7 @@ function toggleHandMode() {
           :class="`bg-${loadedPlates[plateKey].color}-800`"
           class="p-2 w-[50px] h-[50px] bg-opacity-20 dark:bg-opacity-0 border-4 flex flex-col items-center justify-center number aspect-square relative z-0   rounded-full  border-solid border  text-xl">
           {{
-          loadedPlates[plateKey].weight }}</button>
+            loadedPlates[plateKey].weight }}</button>
 
       </transition-group>
     </div>
