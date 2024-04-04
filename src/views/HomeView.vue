@@ -65,8 +65,6 @@ export function reset() {
 
     <HeaderBar />
 
-    <!--  -->
-
     <div class="relative flex items-center px-4 mb-4 space-x-1" :class="leftyMode ? 'justify-end ml-12  ' : ''"
       v-for="(plate, plateKey) in loadedPlates" :key="plateKey">
       <button @click="loadedPlates[plateKey].count++" v-if="loadedPlates[plateKey]"
@@ -85,8 +83,6 @@ export function reset() {
 
       </transition-group>
     </div>
-
-    <!-- dark:text-orange-400 dark:bg-slate-800 -->
 
     <TotalWeight />
 
